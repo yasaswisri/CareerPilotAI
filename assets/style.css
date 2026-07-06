@@ -1,0 +1,967 @@
+/* ===================================================
+   GOOGLE FONT
+=================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+html,
+body,
+[class*="css"]{
+    font-family:'Poppins',sans-serif;
+}
+
+/* ===================================================
+   BACKGROUND
+=================================================== */
+
+.stApp{
+    /* Refined blue gradient background (keeps existing theme) */
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 35%, #4f46e5 65%, #eef2ff 100%);
+}
+
+/* ===================================================
+   REMOVE STREAMLIT HEADER
+=================================================== */
+
+header{
+visibility:hidden;
+}
+
+footer{
+visibility:hidden;
+}
+
+#MainMenu{
+visibility:hidden;
+}
+
+/* ===================================================
+   PAGE TITLE
+=================================================== */
+
+.page-title{
+
+text-align:center;
+
+font-size:42px;
+
+font-weight:800;
+
+color:#6C63FF;
+
+margin-bottom:25px;
+
+}
+
+/* ===================================================
+   LEFT PANEL
+=================================================== */
+
+.left-panel{
+    background: linear-gradient(135deg, #2b2a62, #5b4ee6);
+    border-radius: 25px;
+    padding: 50px;
+    color: white;
+    min-height: 720px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ===================================================
+   LOGO
+=================================================== */
+
+.brand-logo{
+
+width:90px;
+
+height:90px;
+
+background:white;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:45px;
+
+margin-bottom:30px;
+
+}
+
+/* ===================================================
+   LEFT TITLE
+=================================================== */
+
+.left-panel h1{
+
+font-size:48px;
+
+font-weight:800;
+
+line-height:1.2;
+
+margin-bottom:20px;
+
+}
+
+/* ===================================================
+   SUBTITLE
+=================================================== */
+
+.subtitle{
+
+font-size:19px;
+
+line-height:1.8;
+
+opacity:.95;
+
+margin-bottom:25px;
+
+}
+
+/* ===================================================
+   FEATURE BOX
+=================================================== */
+
+.feature-box{
+
+background:rgba(255,255,255,.18);
+
+padding:18px;
+
+border-radius:15px;
+
+margin-top:15px;
+
+font-size:18px;
+
+backdrop-filter:blur(10px);
+
+transition:.3s;
+
+}
+
+.feature-box:hover{
+
+transform:translateX(8px);
+
+background:rgba(255,255,255,.28);
+
+}
+
+/* ===================================================
+   QUOTE
+=================================================== */
+
+.quote-box{
+
+margin-top:35px;
+
+background:rgba(255,255,255,.12);
+
+padding:25px;
+
+border-radius:18px;
+
+backdrop-filter:blur(15px);
+
+}
+
+.quote-box h3{
+
+font-size:24px;
+
+font-weight:700;
+
+line-height:1.6;
+
+}
+
+.quote-box p{
+
+margin-top:10px;
+
+font-size:17px;
+
+opacity:.9;
+
+}
+
+/* ===================================================
+   SIGNUP CARD
+=================================================== */
+
+.signup-card{
+
+background:white;
+
+padding:40px;
+
+border-radius:25px;
+
+box-shadow:0 20px 45px rgba(233, 231, 231, 0.12);
+
+margin-top:30px;
+
+}
+
+.signup-card h2{
+
+font-size:34px;
+
+font-weight:700;
+
+margin-bottom:10px;
+
+color:#3f3e3e;
+
+}
+
+.signup-card p{
+
+font-size:17px;
+
+color:#7869d3;
+
+margin-bottom:25px;
+
+}
+
+/* ===================================================
+   INPUTS
+=================================================== */
+
+.stTextInput input{
+
+border-radius:14px;
+
+padding:12px;
+
+border:1px solid #dcdcdc;
+
+}
+
+/* ===================================================
+   BUTTON
+=================================================== */
+
+.stButton>button{
+
+width:100%;
+
+height:55px;
+
+border:none;
+
+border-radius:15px;
+
+background:linear-gradient(
+90deg,
+#6C63FF,
+#8A7DFF);
+
+color:white;
+
+font-size:18px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.stButton>button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 10px 25px rgba(108,99,255,.4);
+
+}
+
+/* ===================================================
+   CHECKBOX
+=================================================== */
+
+.stCheckbox{
+
+margin-top:5px;
+
+margin-bottom:10px;
+
+}
+
+/* ===================================================
+   HORIZONTAL LINE
+=================================================== */
+
+hr{
+
+border:none;
+
+height:1px;
+
+background:#eeeeee;
+
+margin:20px 0;
+
+}
+
+/* ===================================================
+   LOGIN LINK
+=================================================== */
+
+a{
+
+color:#4742b0 !important;
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+a:hover{
+
+text-decoration:underline;
+
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:900px){
+
+.left-panel{
+
+min-height:auto;
+
+margin-bottom:25px;
+
+padding:35px;
+
+}
+
+.left-panel h1{
+
+font-size:36px;
+
+}
+
+.page-title{
+
+font-size:34px;
+
+}
+
+.signup-card{
+
+margin-top:0;
+
+}
+
+}
+/* Hide new Streamlit navigation */
+
+[data-testid="stSidebarNav"] {
+    display: none !important;
+}
+
+section[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+button[kind="header"] {
+    display: none !important;
+}
+
+[data-testid="collapsedControl"] {
+    display: none !important;
+}
+/* Hide Streamlit UI */
+
+#MainMenu,
+footer,
+header,
+[data-testid="stSidebar"],
+[data-testid="collapsedControl"]{
+display:none;
+}
+
+/* Main page: base app container - keep gradient defined earlier */
+.stApp{ /* base container - gradient defined above */
+    min-height: 100vh; /* ensure rule is not empty and provide base sizing */
+}
+
+/* Left Section */
+
+.login-left{
+
+height:92vh;
+
+border-radius:25px;
+
+padding:60px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:white;
+
+background:
+linear-gradient(
+rgba(22,42,110,0.25),
+rgba(49,91,255,0.35)
+),
+url("career-bg.png");
+
+background-size:cover;
+
+background-position:center;
+
+background-repeat:no-repeat;
+
+position:relative;
+
+overflow:hidden;
+
+}
+.hero-content{
+max-width:500px;
+}
+
+/* Glassmorphism wrapper inside left hero */
+.glass-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px) saturate(120%);
+    box-shadow: 0 10px 30px rgba(6,8,37,0.35);
+}
+
+.hero-logo{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 24px;
+
+background:rgba(255,255,255,.18);
+
+border:1px solid rgba(255,255,255,.25);
+
+border-radius:50px;
+
+backdrop-filter:blur(12px);
+
+font-size:20px;
+
+font-weight:700;
+
+color:white;
+
+margin-bottom:30px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+transition:.3s;
+
+}
+
+.hero-logo:hover{
+
+transform:translateY(-3px);
+
+background:rgba(255,255,255,.28);
+
+}
+
+.hero-logo span{
+
+font-weight:700;
+
+letter-spacing:.5px;
+
+}
+
+.hero-content h1{
+    font-size:55px;
+    font-weight:800;
+    margin-bottom:20px;
+    line-height:1.05;
+}
+
+/* Increased visibility for the welcome heading */
+.hero-content h1.welcome{
+    font-size:62px;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-shadow: 0 6px 30px rgba(15,23,42,0.45);
+}
+
+.hero-content span{
+color:#9fd4ff;
+}
+
+.hero-content p{
+    font-size:19px;
+    opacity:.95;
+    margin-bottom:35px;
+    line-height:1.7;
+}
+
+.hero-content p.lead{
+    font-size:17px;
+    color: rgba(255,255,255,0.95);
+}
+
+/* Feature cards */
+
+.feature-card{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(12px);
+
+padding:18px;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+transition:.3s;
+
+cursor:pointer;
+
+}
+
+.feature-card:hover{
+
+background:rgba(255,255,255,.28);
+
+transform:translateX(8px);
+
+}
+/* Right Card */
+
+.login-card{
+    background: linear-gradient(180deg,#ffffff, #fbfbff);
+    padding: 42px;
+    border-radius: 20px;
+    box-shadow: 0 18px 50px rgba(17,24,39,0.08), 0 6px 18px rgba(17,24,39,0.04);
+    margin-top: 20px;
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.login-card:hover{
+
+transform:translateY(-6px);
+
+}
+.brand-title{
+    font-size:40px;
+    font-weight:900;
+    margin-bottom:12px;
+    letter-spacing:-0.5px;
+}
+
+.brand-title span{
+    color: #6b46ff;
+    background: linear-gradient(90deg,#3b82f6,#7c3ff2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.login-card h2{
+    font-size:42px;
+    margin-bottom:10px;
+    font-weight:800;
+}
+
+/* Additional visibility for Login heading */
+.login-heading{
+    font-size:48px!important;
+    color:#0f172a;
+    font-weight:900!important;
+    margin-bottom:6px!important;
+}
+
+.subtitle{
+    color:#4b5563;
+    margin-bottom:28px;
+    font-size:16px;
+    opacity:0.95;
+}
+
+/* Make subtitle easier to read */
+.subtitle{
+    color:#475569;
+}
+
+/* Inputs */
+/* Sign Up input text and professional inputs */
+.stTextInput input {
+    color: #0b1220 !important;
+    -webkit-text-fill-color: #0b1220 !important;
+    caret-color: #0b1220 !important;
+    background: #ffffff !important;
+}
+
+/* Placeholder */
+.stTextInput input::placeholder {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+}
+
+/* Labels */
+.stTextInput label {
+    color: #222222 !important;
+    font-weight: 600;
+}
+/* ===========================
+   PROFESSIONAL INPUT FIELDS
+=========================== */
+
+/* Professional Input Box */
+
+.stTextInput input {
+
+    height: 58px !important;
+
+    line-height: 58px !important;
+
+    padding: 0 18px 0 18px !important;
+
+    font-size: 16px !important;
+
+    border-radius: 14px !important;
+
+    border: 1px solid #D1D5DB !important;
+
+    box-sizing: border-box !important;
+
+    background-color: #ffffff !important;
+
+    background-repeat: no-repeat !important;
+    background-size: 0 0 !important;
+    background-position: 0 0 !important;
+
+}
+.stTextInput input::placeholder {
+    line-height: 58px !important;
+    color: #9CA3AF !important;
+    opacity: 1 !important;
+    font-size: 15px !important;
+}
+.stTextInput input:focus{
+
+    border:2px solid #4F46E5 !important;
+
+    box-shadow:0 0 0 4px rgba(79,70,229,.15) !important;
+
+    outline:none !important;
+
+}
+.stTextInput input::-ms-reveal,
+.stTextInput input::-ms-clear,
+.stTextInput input::-webkit-credentials-auto-fill-button,
+.stTextInput input::-webkit-search-cancel-button {
+    display: none !important;
+    -webkit-appearance: none !important;
+}
+.stTextInput label{
+    font-size:15px;
+    font-weight:600;
+    color:#374151;
+}
+div[data-testid="stTextInput"]{
+
+    margin-bottom:18px;
+
+}
+
+.signup-inline {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.signup-inline a {
+    color: #2563eb !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signup-inline a:hover {
+    text-decoration: underline;
+}
+/* Button */
+
+.stButton>button,
+.stFormSubmitButton>button{
+    width:100%;
+    height:58px;
+    border:none;
+    border-radius:18px;
+    background: linear-gradient(90deg,#2563eb 0%, #6c63ff 100%);
+    color:white;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:.5px;
+    box-shadow:0 15px 35px rgba(37,99,235,.28);
+    transition: transform .28s ease, box-shadow .28s ease, background-position .6s ease;
+    background-size:200% 100%;
+    background-position: 0% 0%;
+}
+
+.stButton>button:hover,
+.stFormSubmitButton>button:hover{
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 20px 50px rgba(63,48,201,0.22);
+    background-position: 100% 0%;
+}
+
+.stFormSubmitButton>button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 20px 45px rgba(37,99,235,.45);
+
+}
+
+/* Google button */
+
+div[data-testid="stButton"] button[kind="secondary"]{
+    width: 100% !important;
+    height: 58px !important;
+    border-radius: 16px !important;
+    border: 1px solid #d1d5db !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stButton"] button[kind="secondary"]:hover{
+    border-color: #c7d2fe !important;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Checkbox */
+
+.stCheckbox{
+
+margin-top:8px;
+
+margin-bottom:10px;
+
+}
+
+/* Divider */
+
+hr{
+
+margin:30px 0;
+
+}
+.hero-content{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(8px);
+
+padding:40px;
+
+border-radius:25px;
+
+border:1px solid rgba(255,255,255,.18);
+
+max-width:520px;
+
+}
+.login-left::before{
+
+content:"";
+
+position:absolute;
+
+width:300px;
+
+height:300px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.15);
+
+top:-80px;
+
+left:-80px;
+
+filter:blur(50px);
+
+}
+
+.login-left::after{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+
+height:250px;
+
+border-radius:50%;
+
+background:rgba(0,255,255,.15);
+
+bottom:-60px;
+
+right:-60px;
+
+filter:blur(60px);
+
+}
+/* Remove blue outline from inputs */
+.stTextInput input:focus,
+.stTextInput input:focus-visible,
+.stTextInput input:active {
+
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1px solid #D1D5DB !important;
+
+}
+/* Login Button */
+
+div.stButton > button:first-child{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:14px;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    background:linear-gradient(90deg,#7B2FF7,#3B82F6);
+
+    transition:all .35s ease;
+
+    box-shadow:0 8px 25px rgba(123,47,247,.35);
+
+}
+
+div.stButton > button:first-child:hover{
+
+    transform:translateY(-3px) scale(1.02);
+
+    background:linear-gradient(90deg,#8E44FF,#2196F3);
+
+    box-shadow:0 12px 30px rgba(59,130,246,.45);
+
+}
+
+div.stButton > button:first-child:active{
+
+    transform:scale(.97);
+
+}
+/* =====================================
+   FIX INPUT TEXT VISIBILITY
+   ADD THIS AT THE VERY END OF style.css
+====================================== */
+
+div[data-testid="stTextInput"] input{
+    color:#111827 !important;
+    -webkit-text-fill-color:#111827 !important;
+    caret-color:#111827 !important;
+    background:#ffffff !important;
+}
+
+div[data-testid="stTextInput"] input::placeholder{
+    color:#9CA3AF !important;
+    opacity:1 !important;
+}
+
+div[data-testid="stTextInput"] input[type="text"]{
+    color:#111827 !important;
+    -webkit-text-fill-color:#111827 !important;
+}
+
+div[data-testid="stTextInput"] input[type="password"]{
+    color:#111827 !important;
+    -webkit-text-fill-color:#111827 !important;
+}
+
+div[data-testid="stTextInput"] input:focus{
+    color:#111827 !important;
+    -webkit-text-fill-color:#111827 !important;
+}
+/* Responsive: stack columns and reduce sizes */
+@media (max-width: 900px) {
+    .login-left{ padding: 28px; height: auto; }
+    .glass-card{ padding: 24px; }
+    .hero-content h1.welcome{ font-size:34px; }
+    .brand-title{ font-size:28px; }
+    .login-heading{ font-size:32px!important; }
+    .login-card{ padding: 24px; border-radius:16px; }
+    .stTextInput input{ height:48px !important; line-height:48px !important; }
+}
+
+/* Forgot password / link underline animations */
+.login-right a, .signup-link{
+    color: #2563eb !important;
+    text-decoration: none !important;
+    position: relative;
+    font-weight:700;
+}
+.login-right a::after, .signup-link::after{
+    content: '';
+    position: absolute;
+    left: 0; bottom: -3px; height: 2px; width: 100%;
+    background: linear-gradient(90deg,#2563eb,#7c3ff2);
+    transform: scaleX(0); transform-origin: left; transition: transform .28s ease;
+}
+.login-right a:hover::after, .signup-link:hover::after{
+    transform: scaleX(1);
+}
+
+/* Signup row: center and only Sign Up blue */
+.signup-row{ display:flex; justify-content:center; align-items:center; gap:8px; margin-top:12px; color:#6b7280; }
+.signup-row span{ color:#6b7280; }
+.signup-row .signup-link{ color:#2563eb; font-weight:800; }
+
+/* Ensure inputs show caret and text clearly */
+.stTextInput input{ caret-color:#0b1220 !important; }
