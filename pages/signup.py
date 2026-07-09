@@ -246,10 +246,8 @@ with right:
             )
 
             if ok:
-
-               st.success("Account created successfully! Redirecting to Login...")
-               time.sleep(1.2)
-               st.switch_page("pages/login.py")
+                st.success("Account created successfully!")
+                st.markdown('<meta http-equiv="refresh" content="0; url=/login" />', unsafe_allow_html=True)
             else:
 
                 st.error("Email already exists.")

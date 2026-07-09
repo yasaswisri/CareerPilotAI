@@ -12,6 +12,7 @@ from database import conn, cursor
 BASE_DIR = Path(__file__).resolve().parent
 SESSION_FILE = BASE_DIR / "auth_session.json"
 ENV_FILE = BASE_DIR / ".env"
+PASSWORD_STATE_FILE = BASE_DIR / "password_state.json"
 
 
 def _load_env():
@@ -98,13 +99,36 @@ def update_password(email, new_password):
     try:
         cursor.execute("UPDATE users SET password=? WHERE email=?", (hashed, email))
         conn.commit()
-        return cursor.rowcount > 0
+        if cursor.rowcount > 0:
+            PASSWORD_STATE_FILE.write_text(json.dumps({"updated": True}), encoding="utf-8")
+            return True
+        return False
     except Exception as e:
         print(e)
         return False
 
 
+def get_password_state():
+    if not PASSWORD_STATE_FILE.exists():
+        return False
+    try:
+        data = json.loads(PASSWORD_STATE_FILE.read_text(encoding="utf-8"))
+        return bool(data.get("updated", False))
+    except Exception:
+        return False
+
+
+def reset_password_state():
+    try:
+        PASSWORD_STATE_FILE.write_text(json.dumps({"updated": False}), encoding="utf-8")
+        return True
+    except Exception:
+        return False
+
+
 def save_session(user, remember=False):
+    profile_data = get_user_profile(user[2]) or {}
+    theme_mode = profile_data.get("theme_mode") or ("dark" if profile_data.get("dark_mode", 0) else "light")
     payload = {
         "authenticated": True,
         "remember_me": remember,
@@ -112,8 +136,128 @@ def save_session(user, remember=False):
         "email": user[2],
         "auth_provider": user[4] if len(user) > 4 else "local",
         "profile_picture": user[5] if len(user) > 5 else None,
+        "theme_mode": theme_mode,
     }
     SESSION_FILE.write_text(json.dumps(payload), encoding="utf-8")
+
+
+def get_user_profile(email):
+    email = _normalize_email(email)
+    cursor.execute(
+        """
+        SELECT name, email, phone, bio, skills, education, experience, certifications,
+               linkedin, github, portfolio, dark_mode, theme_mode, language, response_style,
+               email_notifications, push_notifications, share_anonymous_usage_data, resume_score
+        FROM users
+        WHERE email=?
+        """,
+        (email,),
+    )
+    row = cursor.fetchone()
+    if not row:
+        return None
+
+    columns = [
+        "name",
+        "email",
+        "phone",
+        "bio",
+        "skills",
+        "education",
+        "experience",
+        "certifications",
+        "linkedin",
+        "github",
+        "portfolio",
+        "dark_mode",
+        "theme_mode",
+        "language",
+        "response_style",
+        "email_notifications",
+        "push_notifications",
+        "share_anonymous_usage_data",
+        "resume_score",
+    ]
+    return dict(zip(columns, row))
+
+
+def update_user_profile(email, profile_data):
+    email = _normalize_email(email)
+    allowed_fields = {
+        "name": "name",
+        "phone": "phone",
+        "bio": "bio",
+        "skills": "skills",
+        "education": "education",
+        "experience": "experience",
+        "certifications": "certifications",
+        "linkedin": "linkedin",
+        "github": "github",
+        "portfolio": "portfolio",
+        "resume_score": "resume_score",
+    }
+
+    updates = []
+    values = []
+    for field, db_field in allowed_fields.items():
+        if field in profile_data:
+            updates.append(f"{db_field}=?")
+            values.append(profile_data[field])
+
+    if not updates:
+        return False
+
+    values.append(email)
+    try:
+        cursor.execute(f"UPDATE users SET {', '.join(updates)} WHERE email=?", values)
+        conn.commit()
+        return cursor.rowcount > 0
+    except Exception as exc:
+        print(exc)
+        return False
+
+
+def update_user_settings(email, settings_data):
+    email = _normalize_email(email)
+    allowed_fields = {
+        "dark_mode": "dark_mode",
+        "language": "language",
+        "response_style": "response_style",
+        "theme_mode": "theme_mode",
+        "email_notifications": "email_notifications",
+        "push_notifications": "push_notifications",
+        "share_anonymous_usage_data": "share_anonymous_usage_data",
+    }
+
+    updates = []
+    values = []
+    for field, db_field in allowed_fields.items():
+        if field in settings_data:
+            updates.append(f"{db_field}=?")
+            values.append(settings_data[field])
+
+    if not updates:
+        return False
+
+    values.append(email)
+    try:
+        cursor.execute(f"UPDATE users SET {', '.join(updates)} WHERE email=?", values)
+        conn.commit()
+        return cursor.rowcount > 0
+    except Exception as exc:
+        print(exc)
+        return False
+
+
+def delete_user_account(email):
+    email = _normalize_email(email)
+    try:
+        cursor.execute("DELETE FROM users WHERE email=?", (email,))
+        conn.commit()
+        return cursor.rowcount > 0
+    except Exception as exc:
+        print(exc)
+        return False
 
 
 def load_session():

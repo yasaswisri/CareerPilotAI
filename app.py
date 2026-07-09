@@ -8,8 +8,8 @@ st.set_page_config(
 if "code" in st.query_params or "error" in st.query_params:
     st.session_state["google_oauth_callback"] = dict(st.query_params)
     try:
-        st.switch_page("google_signin.py")
+        st.switch_page("pages/login.py")
     except Exception:
-        st.switch_page("pages/google_signin.py")
+        st.switch_page("pages/login.py")
 else:
     st.switch_page("pages/signup.py")

@@ -4,7 +4,7 @@ import time
 
 import streamlit as st
 
-from auth import get_user_by_email, send_password_reset_otp, update_password
+from auth import get_user_by_email, reset_password_state, send_password_reset_otp, update_password
 
 st.set_page_config(
     page_title="CareerPilot AI",
@@ -77,6 +77,7 @@ if st.session_state["fp_verified"]:
         else:
             ok = update_password(st.session_state["fp_email"], new_password)
             if ok:
+                reset_password_state()
                 st.success("Password reset successful.")
                 time.sleep(1)
                 st.switch_page("pages/login.py")

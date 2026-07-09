@@ -2,6 +2,7 @@ import re
 import time
 import streamlit as st
 from auth import clear_session, load_session, login, save_session
+from components.theme import apply_theme_css, sync_user_context
 st.markdown(
     '<div class="login-page">',
     unsafe_allow_html=True
@@ -38,6 +39,8 @@ st.markdown(hide_streamlit, unsafe_allow_html=True)
 
 with open("assets/style.css", encoding="utf-8") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+sync_user_context()
+apply_theme_css()
 
 # Page-specific UI tweaks (animations, button styles, link underline)
 st.markdown(
@@ -100,14 +103,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
-saved_session = load_session()
-if saved_session:
-    st.session_state["authenticated"] = True
-    st.session_state["name"] = saved_session.get("name", "Guest")
-    st.session_state["email"] = saved_session.get("email", "")
-    st.session_state["remember_me"] = saved_session.get("remember_me", False)
-    st.switch_page("pages/home.py")
 
 # ---------------- PAGE LAYOUT ----------------
 
@@ -207,6 +202,8 @@ with right:
     with fp2:
         st.page_link("pages/forgot_password.py", label="Forgot Password?")
 
+    remember_me = st.checkbox("Remember me", value=False)
+
     # Login Button
     login_btn = st.button("Login", use_container_width=True)
 
@@ -275,9 +272,10 @@ if login_btn:
         st.session_state["name"] = user[1]
         st.session_state["email"] = user[2]
         st.session_state["authenticated"] = True
-        st.success("Login Successful! Redirecting...")
-        time.sleep(1)
-        st.switch_page("pages/home.py")
+        st.session_state["remember_me"] = remember_me
+        save_session(user, remember=remember_me)
+        st.success("Login Successful!")
+        st.markdown('<meta http-equiv="refresh" content="0; url=/home" />', unsafe_allow_html=True)
     else:
         st.session_state["auth_error"] = "Invalid email or password."
         st.rerun()
