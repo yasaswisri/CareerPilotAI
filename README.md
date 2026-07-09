@@ -46,30 +46,6 @@ The project was developed as part of the **Kaggle AI Agents Intensive Vibe Codin
 
 ---
 
-## 📸 Screenshots
-
-### Home Page
-
-<img src="screenshots/home.png" width="900"/>
-
-### Sign Up Page
-
-<img src="screenshots/signup.png" width="900"/>
-
-### Resume Analyzer
-
-<img src="screenshots/resume.png" width="900"/>
-
-### Career Advisor
-
-<img src="screenshots/career.png" width="900"/>
-
-### Interview Coach
-
-<img src="screenshots/interview.png" width="900"/>
-
----
-
 ## 🛠 Tech Stack
 
 ### Frontend
